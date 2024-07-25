@@ -1,3 +1,3 @@
-Interface is built with Django Rest Framework
+Interface is built with Flask Rest Framework
 
 Train model using pytorch
