@@ -1,16 +1,20 @@
-from subprocess import Popen
-from fastapi import FastAPI
-import uvicorn
 import ssl
-
-app = FastAPI()
+from subprocess import Popen
+import sys
+import uvicorn
+from app import app
+from config import CharacterModelTrainingServiceConfig
 
 ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 ssl_context.load_cert_chain("./certs/cert.crt", keyfile="./certs/key.pem")
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+character_model_training_config = CharacterModelTrainingServiceConfig()
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port = 3001, ssl_keyfile="./certs/key.pem", ssl_certfile="./certs/cert.crt")
+    print(sys.argv)
+
+    if sys.argv and len(sys.argv) > 1 and ("run_http" in sys.argv): 
+        uvicorn.run(app, host=character_model_training_config.service_address, port = character_model_training_config.service_port_http)
+    else:
+        Popen(['python', 'src/main.py', 'run_http'])
+        uvicorn.run(app, host=character_model_training_config.service_address, port = character_model_training_config.service_port_https, ssl_keyfile="./certs/key.pem", ssl_certfile="./certs/cert.crt")
