@@ -16,5 +16,5 @@ if __name__ == "__main__":
     if sys.argv and len(sys.argv) > 1 and ("run_http" in sys.argv): 
         uvicorn.run(app, host=character_model_training_config.service_address, port = character_model_training_config.service_port_http)
     else:
-        Popen(['python', 'src/main.py', 'run_http'])
+        Popen(["python", "src/main_character_trainer.py", "run_http"])
         uvicorn.run(app, host=character_model_training_config.service_address, port = character_model_training_config.service_port_https, ssl_keyfile="./certs/key.pem", ssl_certfile="./certs/cert.crt")
