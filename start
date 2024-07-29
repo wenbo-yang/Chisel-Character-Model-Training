@@ -1,1 +1,1 @@
-fastapi dev src/app.py
+python src/main.py
