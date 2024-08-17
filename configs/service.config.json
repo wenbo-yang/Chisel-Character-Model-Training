@@ -1,6 +1,27 @@
 {
     "serviceName": "character-trainer",
     "shortName": "c-char-train",
+    "modelUUID": "00000000-0000-0000-0000-000c8aa7aa10",
+    "batchSize": 32,
+    "dataSize": 50, 
+    "useGPU": false,
+    "loss_threshold": 0.0001,
+    "accuracyThreshold": 1.00,
+    "enoughAccuracyEpochCount": 10,
+    "tempImagePath": [
+        {
+            "env": "development",
+            "url": "./dev/image"
+        },
+        {
+            "env": "local",
+            "url": "./local/image"
+        },
+        {
+            "env": "production",
+            "url": "not implemented"
+        }
+    ],
     "storage": [
         {
             "env": "development",

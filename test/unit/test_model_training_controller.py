@@ -4,13 +4,20 @@ sys.path.append("./")
 sys.path.append("./Chisel-Model-Training-Base")
 sys.path.append("./Chisel-Model-Training-Base/model_training_base")
 
-from model_training_base.controller.model_training_controller import ModelTrainingController
+from src.config import CharacterModelTrainingServiceConfig
+from model_training_base.controller.model_training_base_controller import ModelTrainingBaseController
 
-class FakeConfig:
-    def __init__(self):
-        self.env = "development"
-        self.storage_url = "some_storage_url"
+class FakeBackgroundTasks: 
+    def add_task(self, function, arg):
+        self.__function = function
+        self.__arg = arg
+
+    def run(self):
+        self.__function(self.__arg)
+
+
+config = CharacterModelTrainingServiceConfig("development")
 
 def test_get_controller_from_submodule():
-    controller = ModelTrainingController(FakeConfig())
+    controller = ModelTrainingBaseController(config, FakeBackgroundTasks())
     assert controller != None

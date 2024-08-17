@@ -1,5 +1,5 @@
 import requests
-import pytest
+
 service_url = "https://127.0.0.1:3001"
 
 http_request = requests.Session()
