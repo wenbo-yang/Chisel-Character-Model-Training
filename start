@@ -1,1 +1,1 @@
-python src/main_character_trainer.py
+python src/main_character_trainer.py env development

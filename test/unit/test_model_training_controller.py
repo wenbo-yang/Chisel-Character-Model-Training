@@ -1,11 +1,11 @@
-
 import sys
 sys.path.append("./")
+sys.path.append("./src")
 sys.path.append("./Chisel-Model-Training-Base")
 sys.path.append("./Chisel-Model-Training-Base/model_training_base")
 
 from src.config import CharacterModelTrainingServiceConfig
-from model_training_base.controller.model_training_base_controller import ModelTrainingBaseController
+from src.controller.character_model_training_controller import CharacterModelTrainingController
 
 class FakeBackgroundTasks: 
     def add_task(self, function, arg):
@@ -15,9 +15,8 @@ class FakeBackgroundTasks:
     def run(self):
         self.__function(self.__arg)
 
-
 config = CharacterModelTrainingServiceConfig("development")
 
 def test_get_controller_from_submodule():
-    controller = ModelTrainingBaseController(config, FakeBackgroundTasks())
+    controller = CharacterModelTrainingController(FakeBackgroundTasks(), config)
     assert controller != None
