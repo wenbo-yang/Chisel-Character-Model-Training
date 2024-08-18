@@ -5,6 +5,8 @@
     "python.analysis.extraPaths": [
         "./",
         "./Chisel-Model-Training-base",
-        "./Chisel-Model-Training-base/model_training_base"
+        "./Chisel-Model-Training-base/model_training_base",
+        "./Chisel-Model-Training-base/test",
+        "./src"
     ]
 }
