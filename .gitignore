@@ -163,7 +163,11 @@ cython_debug/
 
 # local env
 fastapi-env/
+dev/
+local/
 
 # mac 
 .DS_Store
+
+
 
